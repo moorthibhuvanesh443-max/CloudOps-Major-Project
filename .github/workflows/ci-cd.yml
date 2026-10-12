@@ -1,3 +1,4 @@
+```yaml
 name: CloudOps CI/CD Pipeline
 
 on:
@@ -34,19 +35,19 @@ jobs:
       - name: Verify Docker Hub username
         if: github.event_name == 'push'
         env:
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_USERNAME: bhuvaneshm21
         run: |
           if [ -z "$DOCKERHUB_USERNAME" ]; then
             echo "ERROR: DOCKERHUB_USERNAME is empty"
             exit 1
           fi
-          echo "Docker Hub username secret is set."
+          echo "Docker Hub username is configured."
 
       - name: Log in to Docker Hub
         if: github.event_name == 'push'
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          username: bhuvaneshm21
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Push image to Docker Hub
@@ -55,4 +56,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/cloudops-app:latest
+          tags: bhuvaneshm21/cloudops-app:latest
+```
