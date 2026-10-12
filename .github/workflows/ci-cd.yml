@@ -38,7 +38,7 @@ jobs:
           DOCKERHUB_USERNAME: bhuvaneshm21
         run: |
           if [ -z "$DOCKERHUB_USERNAME" ]; then
-            echo "ERROR: DOCKERHUB_USERNAME is empty"
+            echo "ERROR: Username is empty"
             exit 1
           fi
           echo "Docker Hub username is configured."
